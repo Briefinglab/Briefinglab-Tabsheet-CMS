@@ -1,0 +1,4 @@
+<?php
+
+define('BRIEFINGLAB_TABSHEET_CMS_JS_PATH', 'js/');
+define('BRIEFINGLAB_TABSHEET_CMS_JS_PROD_PATH', 'js/prod/');
