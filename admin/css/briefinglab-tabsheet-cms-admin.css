@@ -1,0 +1,13 @@
+#tabsheet{
+	background-color: #fafafa;
+
+}
+
+#tabsheet .tabs-panel{
+	padding: 5px;
+	min-height: 300px;
+}
+
+.attachmentlinks.wp-editor-area {
+  min-height: 220px;
+}

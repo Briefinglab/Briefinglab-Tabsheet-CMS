@@ -2,3 +2,6 @@
 
 define('BRIEFINGLAB_TABSHEET_CMS_JS_PATH', 'js/');
 define('BRIEFINGLAB_TABSHEET_CMS_JS_PROD_PATH', 'js/prod/');
+
+define('BRIEFINGLAB_TABSHEET_CMS_CSS_PATH', 'css/');
+define('BRIEFINGLAB_TABSHEET_CMS_CSS_PROD_PATH', 'css/prod/');

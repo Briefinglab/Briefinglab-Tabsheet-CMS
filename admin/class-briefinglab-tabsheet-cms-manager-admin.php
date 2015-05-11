@@ -15,7 +15,7 @@ class Briefinglab_Tabsheet_CMS_Manager_Admin {
         $this->options = $options;
         $this->data_model = $data_model;
         $this->js_configuration = array();
-        if(WP_DEBUG == false) {
+        if(!WP_DEBUG) {
             $this->js_configuration['js_path'] = BRIEFINGLAB_TABSHEET_CMS_JS_PROD_PATH;
             $this->js_configuration['js_extension'] = $this->version . '.min.js';
         }else{
