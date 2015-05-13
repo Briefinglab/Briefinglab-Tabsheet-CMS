@@ -5,9 +5,13 @@
 
 #tabsheet .tabs-panel{
 	padding: 5px;
-	min-height: 300px;
+	min-height: 320px;
 }
 
 .attachmentlinks.wp-editor-area {
   min-height: 220px;
+}
+
+.js .tmce-active .wp-editor-area{
+	color:#333;
 }

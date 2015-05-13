@@ -1,12 +1,5 @@
 (function($){
 
-	$.fn.tinymce_textareas = function(){
-	  tinyMCE.init({
-	    skin : "wp_theme"
-	    // other options here
-	  });
-	};
-
 	$(window).load(function(){
 
 		//js code for admin
@@ -14,66 +7,61 @@
 			var editor_ex_wrap = $('.postarea.wp-editor-expand').hide();
 			var editor_ex = $('#content');
 			var new_editor_ex = editor_ex_wrap.after('<div id="tabsheet" class="categorydiv"><h3>Gestione Informazioni</h3><div class="inside"><ul id="tabsheet-tabs" class="category-tabs"></ul></div></div>').next();
-			var data = {};
+			var datatab = {};
+
+			if(editor_ex.val().length > 0){
+				var val_array = editor_ex.val().split('[tabsheet ');
+				$.each(val_array,function(k,v){
+					var tab_content = ('[tabsheet '+v).split(/\[tabsheet id=\"(.*?)\"\](.*)\[\/tabsheet\]/);
+					datatab[tab_content[1]] = tab_content[2];
+				});
+				
+			}
+
 
 			$.each(tabsheet_tablist.split(';'),function(k,v){
+				var idtab = v.replace(/ /g, '-');
+				//load
+				
 				new_editor_ex.children('.inside').children('ul')
-					.append('<li class="'+(!k?'tabs':'hide-if-no-js')+'"><a href="#txtdiv-'+ v.replace(/ /g, '-') +'"><b>'+v+'</b></a></li>')
-					.after('<div '+(k?'style="display:none"':'')+' class="tabs-panel" id="txtdiv-'+ v.replace(/ /g, '-') +'"><textarea class="attachmentlinks" id="txta_'+ v.replace(/ /g, '-') +'"></textarea></div>');
+					.append('<li class="'+(!k?'tabs':'hide-if-no-js')+'"><a href="#txtdiv-'+ idtab +'"><b>'+v+'</b></a></li>')
+					.after('<div class="tabs-panel" id="txtdiv-'+ idtab +'"><textarea name="'+ idtab +'" class="attachmentlinks" id="txta_'+ idtab +'">'+datatab[idtab]+'</textarea></div>');
 			});
 
 			//load data
-			if(editor_ex.val().length > 0){
-				var val = JSON.parse(editor_ex.find('textarea').val());
-				if(!$.isEmptyObject(val)){
-					$.each(val,function(k,v){ 
-						new_editor_ex.find('textarea[ref='+k+']').text(v.slice(1,-1).replace(/(\\")/g,'"'));
-					});
-				}
-			}
-
-			new_editor_ex.find('textarea').on('change',function(){ //.on('input propertychange',function(){ 
-					new_editor_ex.find('textarea').each(function(){
-						data[$(this).attr('ref')] = JSON.stringify($(this).val());
-					});
-
-				editor_ex.find('textarea').val(JSON.stringify(data));
-					
-			});
-
 
 			new_editor_ex.prepend('<small>* Descrizioni dettagli Modello</small>');
 
-
-
 			/*Effect tabs*/
-			$('#tabsheet-tabs>li>a').on('click',function(e){
-				$(this).parent().addClass('tabs').siblings().removeClass('tabs');
-				$($(this).attr('href')).show().siblings('div').hide();
+			$('#tabsheet-tabs>li>a').each(function(){
+				$(this).on('click',function(e){
+					var tabtxta = $($(this).attr('href'));
+					$(this).parent().addClass('tabs').siblings().removeClass('tabs');
+					if(tabtxta.children('textarea').length > 0)
+						tabtxta.children('textarea').wp_editor({ content_css:false });
+					//
+					
 
-				//$($(this).attr('href')).show().siblings().hide(); //.not($($(this).attr('href'))).hide();
+					tabtxta.show().siblings('div').hide();
 
-				e.preventDefault();
-			}).each(function(){ 
-				$($(this).attr('href')).children('textarea').wp_editor({textarea_rows:20});
+					e.preventDefault();
+				});
+			}).filter(':first').trigger('click');
+
+
+			//save data
+			new_editor_ex.find('textarea').on('change',function(){ 
+				//reset content	
+				editor_ex.val('');
+				new_editor_ex.find('textarea').each(function(){
+					editor_ex
+						.val( editor_ex.val() + '[tabsheet id="'+($(this).attr('id').substr(5))+'"]' + ($(this).val().replace(/(\[)/ig,'&#91;')) + '[/tabsheet]');
+
+				});
+				
 			});
 
 		} // endif riassunto */
 		
-
-
-
 	});
 })(jQuery);
-
-
-function addTinyText(id){
-//add textarea to DOM
-//init tineMCE
- tinyMCE.init({
-        theme : "advanced",
-        plugins : "emotions,spellchecker"
-});
-//add tinymce to this
-tinyMCE.execCommand("mceAddControl", false, id);
-}

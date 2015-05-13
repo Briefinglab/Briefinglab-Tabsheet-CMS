@@ -179,7 +179,7 @@ class Briefinglab_Tabsheet_CMS_Manager_Options {
             'includes_url' => includes_url()
         );
 
-        wp_register_script( 'ap_wpeditor_init', dirname(plugin_dir_url(__FILE__)) . '/js/js-wp-editor.min.js', array( 'jquery' ), '1.1', true );
+        wp_register_script( 'ap_wpeditor_init', dirname(plugin_dir_url(__FILE__)) . '/js/js-wp-editor.js', array( 'jquery' ), '1.1', true );
         wp_localize_script( 'ap_wpeditor_init', 'ap_vars', $ap_vars );
         wp_enqueue_script( 'ap_wpeditor_init' );
     }
