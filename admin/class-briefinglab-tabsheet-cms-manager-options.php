@@ -33,7 +33,7 @@ class Briefinglab_Tabsheet_CMS_Manager_Options {
 
     public function enqueue_scripts($hook) { 
       $post_types = explode('|||',$this->options['briefinglab-tabsheet-cms-post-type']);
-        if(empty($post_types) || ('post.php' == $hook && in_array(get_post_type(),$post_types))){
+        if(empty($post_types) || ( in_array($hook,array('post.php','post-new.php')) && in_array(get_post_type(),$post_types))){
             wp_localize_script('briefinglab-tabsheet-cms-admin-js', 'tabsheet_tablist',$this->options['briefinglab-tabsheet-cms-tab-list']);
             wp_enqueue_script('briefinglab-tabsheet-cms-admin-js');
             wp_enqueue_style('briefinglab-tabsheet-cms-admin-css');

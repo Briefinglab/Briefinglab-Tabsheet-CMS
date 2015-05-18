@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: briefinglab tabsheet cms\n"
+"Project-Id-Version: briefinglab jsondata cms\n"
 "POT-Creation-Date: 2015-05-07 00:41+0100\n"
 "PO-Revision-Date: 2015-05-07 00:41+0100\n"
 "Last-Translator: Luca Maroni <lcmaroni77@gmail.com>\n"
@@ -15,29 +15,29 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-SearchPath-0: C:\\xampp\\htdocs\\wp-plugin-dev\\wordpress\\wp-"
-"content\\plugins\\briefinglab-tabsheet-cms\n"
+"content\\plugins\\briefinglab-jsondata-cms\n"
 
-#: C:\xampp\htdocs\wp-plugin-dev\wordpress\wp-content\plugins\briefinglab-tabsheet-cms/admin/class-briefinglab-tabsheet-cms-manager-options.php:36
-msgid "Tabsheet CMS Options"
-msgstr "Opzioni Tabsheet CMS"
+#: C:\xampp\htdocs\wp-plugin-dev\wordpress\wp-content\plugins\briefinglab-jsondata-cms/admin/class-briefinglab-jsondata-cms-manager-options.php:36
+msgid "JsonData CMS Options"
+msgstr "Opzioni JsonData CMS"
 
-#: C:\xampp\htdocs\wp-plugin-dev\wordpress\wp-content\plugins\briefinglab-tabsheet-cms/admin/class-briefinglab-tabsheet-cms-manager-options.php:47
-msgid "WP Tabsheet CMS options"
-msgstr "Opzioni WP Tabsheet CMS"
+#: C:\xampp\htdocs\wp-plugin-dev\wordpress\wp-content\plugins\briefinglab-jsondata-cms/admin/class-briefinglab-jsondata-cms-manager-options.php:47
+msgid "WP JsonData CMS options"
+msgstr "Opzioni WP JsonData CMS"
 
-#: C:\xampp\htdocs\wp-plugin-dev\wordpress\wp-content\plugins\briefinglab-tabsheet-cms/admin/class-briefinglab-tabsheet-cms-manager-options.php:68
+#: C:\xampp\htdocs\wp-plugin-dev\wordpress\wp-content\plugins\briefinglab-jsondata-cms/admin/class-briefinglab-jsondata-cms-manager-options.php:68
 msgid "General settings"
 msgstr "Impostazioni Generali"
 
-#: C:\xampp\htdocs\wp-plugin-dev\wordpress\wp-content\plugins\briefinglab-tabsheet-cms/admin/class-briefinglab-tabsheet-cms-manager-options.php:75
+#: C:\xampp\htdocs\wp-plugin-dev\wordpress\wp-content\plugins\briefinglab-jsondata-cms/admin/class-briefinglab-jsondata-cms-manager-options.php:75
 msgid "Post type"
 msgstr "Post type"
 
-#: C:\xampp\htdocs\wp-plugin-dev\wordpress\wp-content\plugins\briefinglab-tabsheet-cms/admin/class-briefinglab-tabsheet-cms-manager-options.php:83
+#: C:\xampp\htdocs\wp-plugin-dev\wordpress\wp-content\plugins\briefinglab-jsondata-cms/admin/class-briefinglab-jsondata-cms-manager-options.php:83
 msgid "Tab list"
 msgstr "Lista di Tab"
 
-#: C:\xampp\htdocs\wp-plugin-dev\wordpress\wp-content\plugins\briefinglab-tabsheet-cms/admin/class-briefinglab-tabsheet-cms-manager-options.php:136
+#: C:\xampp\htdocs\wp-plugin-dev\wordpress\wp-content\plugins\briefinglab-jsondata-cms/admin/class-briefinglab-jsondata-cms-manager-options.php:136
 msgid ""
 "list the tabs to be showed splitted by \";\" e.g: specifiche tecniche;"
 "descrizione;optionals"
