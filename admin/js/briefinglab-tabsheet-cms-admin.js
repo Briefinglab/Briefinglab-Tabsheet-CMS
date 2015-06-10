@@ -4,20 +4,23 @@
 
 		//js code for admin
 		if($('#content').length > 0 ){
+			var regx = /\[tabsheet id="?(.*?)"[^\]]*\]([\s\S]*?)\[\/tabsheet\]/g;
 			var editor_ex_wrap = $('.postarea.wp-editor-expand').hide();
 			var editor_ex = $('#content');
 			var new_editor_ex = editor_ex_wrap.after('<div id="tabsheet" class="categorydiv"><h3>Gestione Informazioni</h3><div class="inside"><ul id="tabsheet-tabs" class="category-tabs"></ul></div></div>').next();
 			var datatab = {};
 
-			if(editor_ex.val().match(/\[tabsheet id=\"(.*?)\"\](.*)\[\/tabsheet\]/) != null ){
-				var val_array = editor_ex.val().split('[tabsheet ');
-				if(val_array.length > 0)
-				$.each(val_array,function(k,v){
-					var tab_content = ('[tabsheet '+v).split(/\[tabsheet id=\"(.*?)\"\](.*)\[\/tabsheet\]/);
-					datatab[tab_content[1]] = tab_content[2];
-				});
+			/* load data from textarea and match element */
+			if(regx.test(editor_ex.val())){
+				var txt = editor_ex.val();
 				
+				$.each(txt.match(regx),function(k,v){
+			        var tmp = v.split(regx);
+			        datatab[tmp[1]] = tmp[2];
+			    });
+
 			}
+
 
 
 			$.each(tabsheet_tablist.split(';'),function(k,v){
@@ -52,7 +55,7 @@
 
 			//save data
 			editor_ex.parents('form:first').bind('submit',function(){
-				editor_ex.val(editor_ex.val().replace('/\[tabsheet (.*)\](.*)\[\/tabsheet\]/gm',''));
+				editor_ex.val(editor_ex.val().replace(regx,'').trim());
 				new_editor_ex.find('textarea').each(function(){
 					editor_ex
 						.val( editor_ex.val() + '[tabsheet id="'+($(this).attr('id').substr(5))+'"]' + ($(this).val().replace(/(\[)/ig,'&#91;')) + '[/tabsheet]');

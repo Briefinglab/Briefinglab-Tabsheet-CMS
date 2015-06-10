@@ -143,6 +143,8 @@ class Briefinglab_Tabsheet_CMS_Manager {
 
         Briefinglab_Tabsheet_CMS_Theme_Functions::define_theme_functions();
 
+        $this->loader->add_action( 'init', $public, 'add_shortcode' );
+
     }
 
     private function define_register_activation_hook() {
