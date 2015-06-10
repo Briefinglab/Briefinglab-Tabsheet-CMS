@@ -8,6 +8,8 @@ class Briefinglab_Tabsheet_CMS_Manager_Options {
 
     private $js_configuration;
 
+    static private $occurrence = 0;
+
     function __construct($version, $options) {
         $this->version = $version;
         $this->options = $options;
@@ -64,7 +66,7 @@ class Briefinglab_Tabsheet_CMS_Manager_Options {
                 ?>
             </form>
         </div>
-    <?php wp_editor('','ididid');
+    <?php 
     }
 
     function options_page_init() {
@@ -153,7 +155,7 @@ class Briefinglab_Tabsheet_CMS_Manager_Options {
     function js_wp_editor( $settings = array() ) {
         if( ! class_exists( '_WP_Editors' ) )
             require( ABSPATH . WPINC . '/class-wp-editor.php' );
-        $set = _WP_Editors::parse_settings( 'apid', $settings );
+        $set = _WP_Editors::parse_settings( 'apid-'.self::$occurrence, $settings );
 
         if ( !current_user_can( 'upload_files' ) )
             $set['media_buttons'] = false;
@@ -172,7 +174,7 @@ class Briefinglab_Tabsheet_CMS_Manager_Options {
             ) );
         }
 
-        _WP_Editors::editor_settings( 'apid', $set );
+        _WP_Editors::editor_settings( 'apid-'.self::$occurrence++ , $set );
 
         $ap_vars = array(
             'url' => get_home_url(),
